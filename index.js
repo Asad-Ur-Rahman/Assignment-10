@@ -32,17 +32,17 @@ function postData() {
 
     opt.innerText = '';
 
-    let val = document.getElementById("txt").value;
+    let val = document.getElementById("txt").value.trim();
 
-    if (val !== "" && val !== ' ') {
+    if (val !== "") {
 
         axios.post('https://the-server-1.herokuapp.com/post', {
             "text": val
         })
             .then(function (response) {
                 console.log(response);
-                opt.innerText = 'Value added sucessfully';
                 document.getElementById("txt").value = ""
+                opt.innerText = 'Value added sucessfully';
             })
 
     } else {
