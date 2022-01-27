@@ -13,8 +13,8 @@ function getData() {
             for (const key in response.data) {
                 //console.log(response.data[key]['text']);
 
-                opt.innerText +=`${response.data[key]['text']} \n`
-                
+                opt.innerText += `${response.data[key]['text']} \n`
+
             }
         })
         .catch(function (error) {
@@ -28,17 +28,27 @@ function getData() {
 }
 
 
-function postData(){
+function postData() {
 
     opt.innerText = '';
 
-    const val = document.getElementById("txt").value;
+    let val = document.getElementById("txt").value;
+    console.log(val === "")
 
-    axios.post('https://the-server-1.herokuapp.com/post', {
-        "text": val
-      })
-      .then(function (response) {
-        console.log(response);
-        opt.innerText = 'Value added sucessfully';
-      })
+    if (val !== "" && val !== ' ') {
+
+        axios.post('https://the-server-1.herokuapp.com/post', {
+            "text": val
+        })
+            .then(function (response) {
+                console.log(response);
+                opt.innerText = 'Value added sucessfully';
+                document.getElementById("txt").value = ""
+            })
+
+    } else {
+        opt.innerHTML = "Please add some value"
+    }
+
+    
 }
