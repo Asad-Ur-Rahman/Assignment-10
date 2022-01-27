@@ -33,7 +33,6 @@ function postData() {
     opt.innerText = '';
 
     let val = document.getElementById("txt").value;
-    console.log(val === "")
 
     if (val !== "" && val !== ' ') {
 
