@@ -1,6 +1,8 @@
+let opt = document.getElementById("opt")
+
+
 function getData() {
 
-    let opt = document.getElementById("opt")
     opt.innerText = '';
 
     axios.get('https://the-server-1.herokuapp.com/posts')
@@ -28,6 +30,8 @@ function getData() {
 
 function postData(){
 
+    opt.innerText = '';
+
     const val = document.getElementById("txt").value;
 
     axios.post('https://the-server-1.herokuapp.com/post', {
@@ -35,5 +39,6 @@ function postData(){
       })
       .then(function (response) {
         console.log(response);
+        opt.innerText = 'Value added sucessfully';
       })
 }
