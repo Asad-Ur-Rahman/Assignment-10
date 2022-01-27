@@ -1,6 +1,8 @@
 import express from 'express'
+var cors = require('cors')
 
 
+app.use(cors())
 const app = express()
 app.use(express.json())
 const PORT = process.env.PORT || 3000
