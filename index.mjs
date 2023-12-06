@@ -33,11 +33,17 @@ app.post('/post', (req, res) => {
 
     res.send(`your post is saved 🥳 now we have ${posts.length} posts`)
 })
-app.put('/post', (req, res) => {
-    res.send('I am Express.js server')
+app.put('/post/:id', (req, res) => {
+
+    const id = Number(req.params.id);
+    posts[id] = req.body;
+    res.send(`Value update at ${id}`)
 })
-app.delete('/post', (req, res) => {
-    res.send('I am Express.js server')
+app.delete('/post/:id', (req, res) => {
+
+    const id = Number(req.params.id);
+    posts.splice(id, 1);
+    res.send('Requested element is deleted')
 })
 
 
